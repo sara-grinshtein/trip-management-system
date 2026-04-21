@@ -7,6 +7,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
+.vs/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -24,6 +26,7 @@ bld/
 [Ll]ogs/
 
 # .NET Core
+
 project.lock.json
 project.fragment.lock.json
 artifacts/
