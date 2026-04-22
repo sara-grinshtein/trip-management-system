@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Repository.Entities
+namespace Common.Dto_s
 {
-    public class Teacher
+    public class StudentDto
     {
-        [Key]
-        public required string Id { get; set; }
+        public int Id { get; set; }
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
-        public required string TeacherClass { get; set; }
 
+        public required string StudentClass { get; set; }
     }
 }
