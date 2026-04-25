@@ -8,7 +8,7 @@ namespace Common.Dto_s
 {
     public class TeacherDto
     {
-        public int Id { get; set; }
+        public required string Id { get; set; }
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
 
