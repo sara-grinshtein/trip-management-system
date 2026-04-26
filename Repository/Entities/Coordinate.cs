@@ -8,5 +8,12 @@ namespace Repository.Entities
 {
     public class Coordinate
     {
+        public required double Degrees { get; set; }
+
+        public required int Minutes { get; set; }
+
+        public required double Seconds { get; set; }
+
+
     }
 }

@@ -8,6 +8,16 @@ namespace Repository.Entities
 {
     public class Location
     {
+        
+        public required string ID { get; set; }
+
+
+        public required Coordinate Longitude { get; set; }
+
+        public required Coordinate Latitude { get; set; }
+
+
+        public DateTime Time { get; set; }
 
     }
 }
