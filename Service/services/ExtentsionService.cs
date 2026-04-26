@@ -19,6 +19,9 @@ namespace Service.services
         {
             services.AddScoped<IRepository<Student>, StudentRepository>();
             services.AddScoped<IService<StudentDto>, StudentService>();
+            services.AddScoped<IService<TeacherDto>, TeacherService>();
+            services.AddScoped<IRepository<Teacher>, TeacherRepository>();
+
             return services;
         }
     }

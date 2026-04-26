@@ -17,7 +17,7 @@ namespace Repository.Entities
         public required Coordinate Latitude { get; set; }
 
 
-        public DateTime Time { get; set; }
+        public DateTime Time { get; set; } = new DateTime();
 
     }
 }

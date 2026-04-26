@@ -31,20 +31,39 @@ namespace Service.services
             var teacherEntity = _mapper.Map<Teacher>(item);
 
             // Send the entity to the repository layer
-            var savedEntity = await _repository.AddItem(teacherEntity);
+            try
+            {
+                var savedEntity = await _repository.AddItem(teacherEntity);
+                return _mapper.Map<TeacherDto>(savedEntity);
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("failed saved teacher in the DB.", ex);
+            }
             // Convert to DTO in order to return it
-            return _mapper.Map<TeacherDto>(savedEntity);
+            //return _mapper.Map<TeacherDto>(savedEntity);
         }
 
         public async Task<List<TeacherDto>> GetAll()
         {
             // retrieve the teachers from the DB 
-            var teachersEntity = await _repository.GetAll();
+            try
+            {
+                var teachersEntity = await _repository.GetAll();
+                if (teachersEntity == null)
+                {
+                    throw new Exception("there is no teachers in the DB.");
+                }
 
-            //Convert from Teacher to teacherDto
-            var teachersDto = _mapper.Map<List<TeacherDto>>(teachersEntity);
+                //Convert from Teacher to teacherDto
+                var teachersDto = _mapper.Map<List<TeacherDto>>(teachersEntity);
+                return teachersDto;
+            }
+            catch (Exception ex) {
+                throw new Exception("failed retrieve teachers from the db");
+            }
 
-            return teachersDto;
         }
 
         public async Task<TeacherDto> Getbyid(string id)
@@ -56,7 +75,7 @@ namespace Service.services
                 return null;
             }
 
-            //conver entity to dto in order to return it
+            //convert entity to dto in order to return it
             return _mapper.Map<TeacherDto>(teacher);
         }
     }
