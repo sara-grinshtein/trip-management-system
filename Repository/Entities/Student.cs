@@ -10,7 +10,7 @@ namespace Repository.Entities
     public class Student
     {
         [Key]
-        public string Id { get; set; }
+        public required string Id { get; set; }
 
         public required string FirstName { get; set; }
 

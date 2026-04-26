@@ -9,5 +9,12 @@ namespace Repository.Entities
     public class Location
     {
 
+        public required string ID { get; set; }
+
+
+        public required Coordinate Cordinate { get; set; }
+
+        public DateTime Time { get; set; }
+
     }
 }
