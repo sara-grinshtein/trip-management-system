@@ -15,8 +15,7 @@ namespace Service.services
     public class StudentService : IService<StudentDto>
     {
         private readonly IRepository<Student> _repository;
-        private readonly IMapper
-            _mapper;
+        private readonly IMapper _mapper;
 
         public StudentService(IRepository<Student> repository, IMapper mapper)
         {
@@ -26,26 +25,46 @@ namespace Service.services
 
         public async Task<StudentDto> AddItem(StudentDto item)
         {
-            // convert fron DTO to entity
-            var studentEntity = _mapper.Map<Student>(item);
+            try
+            {
+                // convert fron DTO to entity
+                var studentEntity = _mapper.Map<Student>(item);
+                // Send the entity to the repository layer
+                var savedEntity = await _repository.AddItem(studentEntity);
 
-            // Send the entity to the repository layer
-            var savedEntity = await _repository.AddItem(studentEntity);
-            // Convert to DTO in order to return it
-            return _mapper.Map<StudentDto>(savedEntity);
+                if (savedEntity == null)
+                {
+                    throw new Exception("there is no student in the DB.");
+                }
+                // Convert to DTO in order to return it
+                return _mapper.Map<StudentDto>(savedEntity);
+            }
+            catch (Exception ex) {
+                throw new Exception("failed to save student in the DB",ex);
+            }
 
         }
 
         public async Task<List<StudentDto>> GetAll()
         {
             // retrieve the students from the DB 
-            var studentsEntity = await _repository.GetAll();
+            try
+            {
+                var studentsEntity = await _repository.GetAll();
+                if(studentsEntity == null)
+                {
+                    throw new Exception("no stodents in DB");
+                }
 
-            //Convert from Student to StudentDto
-            var studentsDto = _mapper.Map<List<StudentDto>>(studentsEntity)
-                ;
-            return studentsDto;
+                //Convert from Student to StudentDto
+                var studentsDto = _mapper.Map<List<StudentDto>>(studentsEntity)
+        ;
+                return studentsDto;
 
+            }
+            catch (Exception ex) {
+                throw new Exception("failed retrieve students from DB.", ex);
+            }
         }
 
         public async Task<StudentDto> Getbyid(string id)

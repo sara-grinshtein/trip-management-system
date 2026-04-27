@@ -16,6 +16,6 @@ namespace Repository.Entities
 
         public required string LastName { get; set; }
 
-        public required string StudentClass { get; set; }
+        public required string classStudent { get; set; }
     }
 }

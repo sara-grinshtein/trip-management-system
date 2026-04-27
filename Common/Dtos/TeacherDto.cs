@@ -12,6 +12,6 @@ namespace Common.Dto_s
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
 
-        public required string TeacherClass {  get; set; }
+        public required string classTeacher {  get; set; }
     }
 }

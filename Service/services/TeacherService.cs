@@ -34,6 +34,7 @@ namespace Service.services
             try
             {
                 var savedEntity = await _repository.AddItem(teacherEntity);
+                // Convert to DTO in order to return it
                 return _mapper.Map<TeacherDto>(savedEntity);
 
             }
@@ -41,8 +42,6 @@ namespace Service.services
             {
                 throw new Exception("failed saved teacher in the DB.", ex);
             }
-            // Convert to DTO in order to return it
-            //return _mapper.Map<TeacherDto>(savedEntity);
         }
 
         public async Task<List<TeacherDto>> GetAll()

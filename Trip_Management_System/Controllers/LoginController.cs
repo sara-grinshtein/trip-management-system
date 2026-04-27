@@ -50,7 +50,7 @@ namespace Trip_Management_System.Controllers
                    Id= value.Id,
                    FirstName = value.FirstName,
                    LastName =  value.LastName, 
-                   TeacherClass = value.Class,
+                   classTeacher = value.Class,
                 };
                 await serviceTeacher.AddItem(newTeacher);
                 var token = GenarateToken(value.Id,value.FirstName,value.LastName,value.Role);
@@ -64,7 +64,7 @@ namespace Trip_Management_System.Controllers
                     Id = value.Id,
                     FirstName = value.FirstName,
                     LastName = value.LastName,
-                    StudentClass = value.Class,
+                    classStudent = value.Class,
                 };
                 await serviceStudent.AddItem(newStudent);
 
