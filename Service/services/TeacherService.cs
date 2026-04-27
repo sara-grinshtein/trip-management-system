@@ -52,7 +52,7 @@ namespace Service.services
                 var teachersEntity = await _repository.GetAll();
                 if (teachersEntity == null)
                 {
-                    throw new Exception("there is no teachers in the DB.");
+                    return new List<TeacherDto>();
                 }
 
                 //Convert from Teacher to teacherDto
@@ -60,7 +60,7 @@ namespace Service.services
                 return teachersDto;
             }
             catch (Exception ex) {
-                throw new Exception("failed retrieve teachers from the db");
+                throw new Exception("failed retrieve teachers from the db",ex);
             }
 
         }

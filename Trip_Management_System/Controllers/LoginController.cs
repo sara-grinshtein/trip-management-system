@@ -28,7 +28,7 @@ namespace Trip_Management_System.Controllers
         //register
 
         [HttpPost("register")]
-        public async Task<IActionResult> Post(Registeration value)
+        public async Task<IActionResult> Post(RegisterUser value)
         {
             if(await AuthenticateTeacher(value.Id)!=null) 
             {

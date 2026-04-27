@@ -53,7 +53,7 @@ namespace Service.services
                 var studentsEntity = await _repository.GetAll();
                 if(studentsEntity == null)
                 {
-                    throw new Exception("no stodents in DB");
+                    return new List<StudentDto>();
                 }
 
                 //Convert from Student to StudentDto

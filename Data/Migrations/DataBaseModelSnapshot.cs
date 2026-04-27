@@ -34,7 +34,7 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentClass")
+                    b.Property<string>("classStudent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -56,7 +56,7 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TeacherClass")
+                    b.Property<string>("classTeacher")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

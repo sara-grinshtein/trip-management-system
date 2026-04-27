@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DataBase))]
-    [Migration("20260421201238_changed_id_types")]
-    partial class changed_id_types
+    [Migration("20260427231610_UpdateClassField")]
+    partial class UpdateClassField
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentClass")
+                    b.Property<string>("classStudent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -59,7 +59,7 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TeacherClass")
+                    b.Property<string>("classTeacher")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
