@@ -32,16 +32,16 @@ namespace Trip_Management_System.Controllers
         {
             if(await AuthenticateTeacher(value.Id)!=null) 
             {
-                return BadRequest("teacher already exists");
+                return BadRequest("teacher with this ID already exists");
             }
             if(await AuthenticateStudent(value.Id) != null) 
             { 
-                return BadRequest(value.Id); 
+                return BadRequest("student with this ID already exists"); 
             }
 
             if (string.IsNullOrEmpty(value.Role))
             {
-                return BadRequest("New user must specify a role.");
+                return BadRequest("new user must specify a role.");
             }
             if(value.Role=="Teacher")
             {
