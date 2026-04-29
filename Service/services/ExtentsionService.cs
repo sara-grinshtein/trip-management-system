@@ -21,6 +21,7 @@ namespace Service.services
             services.AddScoped<IService<StudentDto>, StudentService>();
             services.AddScoped<IService<TeacherDto>, TeacherService>();
             services.AddScoped<IRepository<Teacher>, TeacherRepository>();
+            services.AddScoped<RandomLocations>();
 
             return services;
         }

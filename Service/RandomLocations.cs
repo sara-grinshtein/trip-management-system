@@ -34,13 +34,14 @@ namespace Service
             var random = new Random();
             for (int i = 1; i <= 10; i++)
             {
-                CoordinateDto Longitude = new CoordinateDto
+                //Latitude
+                CoordinateDto Latitude = new CoordinateDto
                 {
                     Degrees = 32,
                     Minutes = 49 + random.Next(-2, 3),
                     Seconds = random.Next(0, 60)
                 };
-                CoordinateDto Latitude = new CoordinateDto
+                CoordinateDto Longitude = new CoordinateDto
                 {
                     Degrees = 34,
                     Minutes = 59 + random.Next(-2, 3),

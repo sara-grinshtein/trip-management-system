@@ -1,4 +1,5 @@
 ﻿using Common.Dto_s;
+using Common.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Service;
 using Service.interfaces;
@@ -41,7 +42,7 @@ namespace Trip_Management_System.Controllers
         }
 
         [HttpGet("{id}/students-locations")]
-        public async Task<List<StudentDto> >GetStudentsLocation(string id)
+        public async Task<List<LocationDto> >GetStudentsLocation(string id)
         {
             var results = await randomLocations.getLocationByTeacherId(id);
             return results;
