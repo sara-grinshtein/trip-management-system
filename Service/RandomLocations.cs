@@ -68,8 +68,8 @@ namespace Service
 
             foreach (var location in locations)
             {
-                var latChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); //הגרלה בין 0 לזמן * dmsperSecond
-                var lonChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); //הגרלה בין 0 לזמן * dmsperSecond
+                var latChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); 
+                var lonChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); 
 
                 location.Latitude.Seconds += latChange;
                 location.Longitude.Seconds += lonChange;
