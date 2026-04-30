@@ -15,6 +15,8 @@ Teachers can log into the app and see the students' location.
 
 git clone https://github.com/sara-grinshtein/trip-management-system.git
 
+cd trip-management-system
+
 Open the file Trip_Management_System.sln
 
 Click the button with the green triangle.
