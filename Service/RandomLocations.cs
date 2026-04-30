@@ -16,8 +16,8 @@ namespace Service
         private readonly IService<TeacherDto> serviceTeacher;
         private readonly IService<StudentDto> serviceStudent;
 
-        public static List<LocationDto> locations=new List<LocationDto>();
-        public static double dmsPerSecond = 1.4/30;//hoe many dms seconds a man go in our second
+        public static List<LocationDto> locations = new List<LocationDto>();
+        public static double dmsPerSecond = 1.4 / 30;//hoe many dms seconds a man go in human second
         public int timeToRefresh = 5;
 
         public RandomLocations(IService<TeacherDto> serviceTeacher, IService<StudentDto> serviceStudent)
@@ -36,19 +36,6 @@ namespace Service
             var students = await serviceStudent.GetAll();
             var studentsByTeacher = students.Where(s => s.classStudent == classTeacher).ToList();
 
-            CoordinateDto LatitudePark = new CoordinateDto
-            {
-                Degrees = 32,
-                Minutes = 47,
-                Seconds = 32.6
-            };
-            CoordinateDto LongitudePark = new CoordinateDto
-            {
-                Degrees = 34,
-                Minutes = 57,
-                Seconds = 25.9
-            };
-
             if (locations.Count == 0)
             {
                 foreach (var student in studentsByTeacher)
@@ -56,8 +43,18 @@ namespace Service
                     locations.Add(new LocationDto
                     {
                         ID = student.Id,
-                        Latitude = LatitudePark,
-                        Longitude = LongitudePark,
+                        Latitude = new CoordinateDto
+                        {
+                            Degrees = 32,
+                            Minutes = 47,
+                            Seconds = 32.6
+                        },
+                        Longitude = new CoordinateDto
+                        {
+                            Degrees = 34,
+                            Minutes = 57,
+                            Seconds = 25.9
+                        },
                         Time = new DateTime()
                     });
                 }
@@ -68,12 +65,20 @@ namespace Service
 
             foreach (var location in locations)
             {
-                var latChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); 
-                var lonChange = r.Next(0, Convert.ToInt32(dmsPerSecond * timeToRefresh)); 
-
-                location.Latitude.Seconds += latChange;
-                location.Longitude.Seconds += lonChange;
-
+                var isMoveLat = r.Next(0, 2);
+                var isMoveLon = r.Next(0, 2);
+                if (isMoveLat == 1)
+                {
+                    var limit = dmsPerSecond * timeToRefresh;
+                    var latChange = r.NextDouble()*limit;
+                    location.Latitude.Seconds += latChange;
+                }
+                if (isMoveLon == 1)
+                {
+                    var limit = dmsPerSecond * timeToRefresh;
+                    var lonChange = r.NextDouble()*limit;
+                    location.Longitude.Seconds += lonChange;
+                }
             }
             return locations;
         }
