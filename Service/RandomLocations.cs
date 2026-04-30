@@ -18,7 +18,7 @@ namespace Service
 
         public static List<LocationDto> locations = new List<LocationDto>();
         public static double dmsPerSecond = 1.4 / 30;//hoe many dms seconds a man go in human second
-        public int timeToRefresh = 5;
+        public static int timeToRefresh = 5;
 
         public RandomLocations(IService<TeacherDto> serviceTeacher, IService<StudentDto> serviceStudent)
         {

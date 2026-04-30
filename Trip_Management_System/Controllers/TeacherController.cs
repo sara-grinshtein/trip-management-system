@@ -47,5 +47,15 @@ namespace Trip_Management_System.Controllers
             var results = await randomLocations.getLocationByTeacherId(id);
             return results;
         }
+        [HttpGet("{id}/students-by-teacher-id")]
+        public async Task<List<StudentDto>> GetStudentsByTeacherId(string id)
+        {
+            var teacher = await serviceTeacher.Getbyid(id);
+
+            var students = await serviceStudent.GetAll();
+            var res = students.Where(s => s.classStudent == teacher.classTeacher).ToList();
+            return res;
+        }
+
     }
 }
