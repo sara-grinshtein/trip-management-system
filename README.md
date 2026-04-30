@@ -13,7 +13,7 @@ Teachers can log into the app and see the students' location.
 
 # Installation
 
-clone https://github.com/sara-grinshtein/trip-management-system.git
+git clone https://github.com/sara-grinshtein/trip-management-system.git
 
 Open the file Trip_Management_System.sln
 
